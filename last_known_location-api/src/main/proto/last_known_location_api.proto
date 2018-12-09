@@ -1,0 +1,24 @@
+/**
+* author. Víctor Gil
+*
+* since December 2018 
+*/
+
+package net.devaction.mylocation.lastknownlocationapi.protobuf;
+
+option java_multiple_files = true; 
+option java_generate_equals_and_hash = true;
+  
+message LastKnownLocationRequest{
+    optional int64 timestamp = 1;
+}
+
+message LastKnownLocationResponse{
+    optional string latitude = 1;
+    optional string longitude = 2;
+    optional string horizontalAccuracy = 3;
+    optional string altitude = 4;
+    optional string verticalAccuracy = 5;
+    optional int64 timeChecked = 6;
+    optional int64 timeMeasured = 7;
+}
