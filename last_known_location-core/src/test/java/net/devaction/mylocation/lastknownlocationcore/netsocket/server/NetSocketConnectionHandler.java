@@ -1,6 +1,5 @@
 package net.devaction.mylocation.lastknownlocationcore.netsocket.server;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 import org.slf4j.Logger;
