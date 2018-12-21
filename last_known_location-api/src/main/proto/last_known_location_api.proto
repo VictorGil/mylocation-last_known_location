@@ -4,21 +4,30 @@
 * since December 2018 
 */
 
+syntax = "proto3";
+
 package net.devaction.mylocation.lastknownlocationapi.protobuf;
 
 option java_multiple_files = true; 
 option java_generate_equals_and_hash = true;
   
 message LastKnownLocationRequest{
-    optional int64 timestamp = 1;
+    int64 timestamp = 1;
 }
 
 message LastKnownLocationResponse{
-    optional string latitude = 1;
-    optional string longitude = 2;
-    optional string horizontalAccuracy = 3;
-    optional string altitude = 4;
-    optional string verticalAccuracy = 5;
-    optional int64 timeChecked = 6;
-    optional int64 timeMeasured = 7;
+    Status status = 1;
+    string latitude = 2;
+    string longitude = 3;
+    string horizontalAccuracy = 4;
+    string altitude = 5;
+    string verticalAccuracy = 6;
+    int64 timeChecked = 7;
+    int64 timeMeasured = 8;
+    string errorCode = 9;
+}
+
+enum Status {
+    SUCCESS = 0;
+    FAILURE = 1;
 }
