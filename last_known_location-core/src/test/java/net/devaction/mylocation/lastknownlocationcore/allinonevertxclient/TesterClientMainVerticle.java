@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.vertx.core.AbstractVerticle;
-import net.devaction.mylocation.lastknownlocationcore.allinonevertxserver.LastKnownLocationServerVerticle;
+import net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerVerticle;
 
 /**
  * @author Víctor Gil
