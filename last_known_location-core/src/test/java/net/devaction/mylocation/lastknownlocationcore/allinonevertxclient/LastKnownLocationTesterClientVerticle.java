@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
+import net.devaction.mylocation.lastknownlocationcore.allinonevertxclient.buffer.TestBufferProvider1;
 
 /**
  * @author Víctor Gil
@@ -22,13 +23,7 @@ public class LastKnownLocationTesterClientVerticle extends AbstractVerticle{
     public void start() throws Exception {
         EventBus eventBus = vertx.eventBus();
         
-        Buffer buffer = Buffer.buffer();
-        final byte byteVar = (byte) 0B00000001;
-        int intVar = byteVar;
-        log.debug("bit literal 0B00000001 represents the following integer: " + intVar);
-        buffer.appendByte((byte) byteVar);
-        buffer.appendByte((byte) byteVar);
-        buffer.appendByte((byte) byteVar);
+        Buffer buffer = TestBufferProvider1.provide();
         
         eventBus.send(address, buffer, new ResponseFromServerHandler());        
     }
