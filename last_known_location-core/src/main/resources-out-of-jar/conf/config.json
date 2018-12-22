@@ -1,0 +1,7 @@
+{
+    "last_known_location_service_config": {
+        "event_bus_last_known_location_address" : "last_known_location_request",
+        "file_path": "data/last_known_location.data"
+    }
+}
+
