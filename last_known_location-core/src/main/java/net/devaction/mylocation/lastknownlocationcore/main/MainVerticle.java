@@ -1,4 +1,4 @@
-package net.devaction.mylocation.lastknownlocationpersistence.main;
+package net.devaction.mylocation.lastknownlocationcore.main;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +22,8 @@ public class MainVerticle extends AbstractVerticle{
     private static final Logger log = LoggerFactory.getLogger(MainVerticle.class);
     private JsonObject vertxConfig;
     
-    private static final String SHARED_CONFIG = "shared_config";
     private static final String LAST_KNOWN_LOCATION_SERVICE_CONFIG = "last_known_location_service_config";
+
     @Override
     public void start(){
         log.info("Starting " + this.getClass().getSimpleName());        
