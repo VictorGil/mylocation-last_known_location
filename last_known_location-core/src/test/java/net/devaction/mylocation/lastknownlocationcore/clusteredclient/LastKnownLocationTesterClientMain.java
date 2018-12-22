@@ -12,6 +12,7 @@ import sun.misc.Signal;
  *
  * since December 2018
  */
+@SuppressWarnings("restriction")
 public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler{
     private static final Logger log = LoggerFactory.getLogger(LastKnownLocationTesterClientMain.class);
     
@@ -20,15 +21,14 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
     private static boolean isVertxClosed = false;  
     
     public static void main(String[] args){
-        log.info("Starting tester  application");        
-        Launcher.executeCommand("run", TesterClientMainVerticle.class.getName(), "-cluster");   
-
         new LastKnownLocationTesterClientMain().run();        
     }
 
     private LastKnownLocationTesterClientMain(){}
     
     private void run(){
+        log.info("Starting tester  application");        
+        Launcher.executeCommand("run", TesterClientMainVerticle.class.getName(), "-cluster");   
         registerThisAsOsSignalHandler();
     }
     
@@ -41,6 +41,7 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
         return vertx;    
     }
     
+    @SuppressWarnings("restriction")
     private void registerThisAsOsSignalHandler(){
         log.info("Going to register this object to handle the " + WINCH_SIGNAL + " signal");
         try{
@@ -56,6 +57,7 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
         }        
     }
     
+    @SuppressWarnings("restriction")
     @Override
     public void handle(Signal signal) {
         log.info("Signal " + signal.getName() + " has been captured.");

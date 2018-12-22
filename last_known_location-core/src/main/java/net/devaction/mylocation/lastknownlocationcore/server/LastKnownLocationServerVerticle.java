@@ -37,12 +37,13 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
     public void start() throws Exception {
         EventBus eventBus = vertx.eventBus();
         
+        
         MessageConsumer<Buffer> consumer = eventBus.consumer(address, handler);
         
         consumer.completionHandler(asyncResult -> {
             if (asyncResult.succeeded()) {
                 log.info("The " + LastKnownLocationServerHandler.class.getSimpleName() + 
-                        " has been successfully registered ans it started listening for messages on " + address + " event bus address.");
+                        " has been successfully registered and it started listening for messages on " + address + " event bus address.");
             } else {
                 log.error("FATAL: Registration of " + LastKnownLocationServerHandler.class.getSimpleName() + " has failed.");
             }

@@ -12,8 +12,27 @@
         <property name="handler" ref="lastKnownLocationServerHandler"/>
     </bean>    
     
-    <bean id="configValuesProvider" class="net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider" />
-    
     <bean id="lastKnownLocationServerHandler" class="net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerHandler" > 
+        <property name="errorBufferProvider" ref="errorBufferProvider"/>
+        <property name="fileReaderBlockingHandler" ref="fileReaderBlockingHandler"/>
+        <property name="fileReaderResultHandler" ref="fileReaderResultHandler"/>
     </bean>
+    
+    <bean id="errorBufferProvider" class="net.devaction.mylocation.lastknownlocationcore.server.ErrorBufferProvider"/>
+    
+    <bean id="fileReaderResultHandler" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.FileReaderResultHandler"/>
+    
+    <bean id="fileReaderBlockingHandler" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.LocationFromFileReaderHandler">
+        <property name="lastLocationReader" ref="lastLocationReader"/>
+    </bean>
+    
+    <bean id="lastLocationReader" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.LastLocationReader">
+        <property name="filePathProvider" ref="configValuesProvider"/>
+    </bean>
+    
+    <bean id="configValuesProvider" class="net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider">
+        <property name="baseDirProvider" ref="baseDirProvider"/>
+    </bean>
+    
+    <bean id="baseDirProvider" class="net.devaction.mylocation.lastknownlocationcore.config.BaseDirProviderImpl"/>
 </beans>

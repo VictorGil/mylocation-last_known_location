@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
+import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationRequest;
 import net.devaction.mylocation.lastknownlocationcore.allinonevertxclient.buffer.TestBufferProvider1;
 
 /**
@@ -23,11 +24,11 @@ public class LastKnownLocationTesterClientVerticle extends AbstractVerticle{
     public void start() throws Exception {
         EventBus eventBus = vertx.eventBus();
         
-        Buffer buffer = TestBufferProvider1.provide();
+        LastKnownLocationRequest protoRequest = LastKnownLocationRequestProvider01.provide();
+        Buffer buffer = Buffer.buffer(); 
+        buffer.appendBytes(protoRequest.toByteArray());
         
         log.info("Going to send a message to " + address + " address.");
         eventBus.send(address, buffer, new ResponseFromServerHandler());        
     }
 }
-
-
