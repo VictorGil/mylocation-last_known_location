@@ -17,7 +17,7 @@ public class LastKnownLocationTesterClientVerticle extends AbstractVerticle{
     private static final Logger log = LoggerFactory.getLogger(LastKnownLocationTesterClientVerticle.class);
     
     //Spring should set this value from the configuration
-    private String address = "last_known_data.request";
+    private String address = "last_known_location_request";
     
     @Override
     public void start() throws Exception {
