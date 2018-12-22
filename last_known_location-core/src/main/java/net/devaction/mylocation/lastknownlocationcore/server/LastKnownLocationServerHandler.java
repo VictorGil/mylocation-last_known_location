@@ -21,8 +21,7 @@ public class LastKnownLocationServerHandler implements Handler<Message<Buffer>>{
         Buffer buffer = binaryMessage.body();
         int numberOfBytesReceived = buffer.length();
         //Example thread name: vert.x-eventloop-thread-1
-        log.trace("We have received a message which contains " + numberOfBytesReceived + " bytes.");        
+        log.trace("We have received a message which contains " + numberOfBytesReceived + " bytes.");
     }
 }
-
 

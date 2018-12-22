@@ -11,6 +11,14 @@
         <appender-ref ref="console" />
     </logger>
 
+    <logger name="net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerHandler" level="trace" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+    <logger name="com.hazelcast" level="warn" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+        
     <root level="error">
         <appender-ref ref="console" />
     </root>

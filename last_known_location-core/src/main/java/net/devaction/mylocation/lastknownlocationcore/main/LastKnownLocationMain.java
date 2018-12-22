@@ -1,4 +1,4 @@
-package net.devaction.mylocation.lastknownlocationpersistence.main;
+package net.devaction.mylocation.lastknownlocationcore.main;
 
 import io.vertx.core.Launcher;
 import io.vertx.core.Vertx;
