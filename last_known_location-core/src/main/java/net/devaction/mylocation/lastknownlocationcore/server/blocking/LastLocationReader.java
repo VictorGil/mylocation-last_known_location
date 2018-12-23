@@ -97,7 +97,7 @@ public class LastLocationReader implements InitializingBean{
         }
         
         if (lock == null){
-            String errMessage = "Unable to acquire read lock after two attempts on " + filePath;
+            String errMessage = "Unable to acquire read/shared lock after two attempts on " + filePath;
             log.error(errMessage);
             failureResponseBuilder.setStatus(Status.FAILURE);
             failureResponseBuilder.setErrorMessage(errMessage);
