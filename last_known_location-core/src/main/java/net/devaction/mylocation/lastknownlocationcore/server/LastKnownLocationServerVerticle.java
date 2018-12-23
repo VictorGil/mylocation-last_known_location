@@ -23,8 +23,9 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
     private String address;
     private AddressProvider addressProvider;
     
-    private LastKnownLocationServerHandler handler;
-
+    //private LastKnownLocationServerHandler handler;
+    private LastKnownLocationServerWorkerHandler handler;
+    
     @Override
     public void afterPropertiesSet() throws Exception{
         if (address == null)
@@ -42,10 +43,10 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
         
         consumer.completionHandler(asyncResult -> {
             if (asyncResult.succeeded()) {
-                log.info("The " + LastKnownLocationServerHandler.class.getSimpleName() + 
+                log.info("The " + LastKnownLocationServerWorkerHandler.class.getSimpleName() + 
                         " has been successfully registered and it started listening for messages on " + address + " event bus address.");
             } else {
-                log.error("FATAL: Registration of " + LastKnownLocationServerHandler.class.getSimpleName() + " has failed.");
+                log.error("FATAL: Registration of " + LastKnownLocationServerWorkerHandler.class.getSimpleName() + " has failed.");
             }
         });        
     }
@@ -53,13 +54,9 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
     public void setAddressProvider(AddressProvider addressProvider){
         this.addressProvider = addressProvider;
     }
-
-    public void setHandler(LastKnownLocationServerHandler handler){
+    
+    public void setHandler(LastKnownLocationServerWorkerHandler handler){
         this.handler = handler;
     }
-
-    public LastKnownLocationServerHandler getHandler(){
-        return handler;
-    } 
 }
 

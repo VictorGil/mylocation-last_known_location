@@ -12,19 +12,12 @@
         <property name="handler" ref="lastKnownLocationServerHandler"/>
     </bean>    
     
-    <bean id="lastKnownLocationServerHandler" class="net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerHandler" > 
+    <bean id="lastKnownLocationServerHandler" class="net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerWorkerHandler" > 
         <property name="errorBufferProvider" ref="errorBufferProvider"/>
-        <property name="fileReaderBlockingHandler" ref="fileReaderBlockingHandler"/>
-        <property name="fileReaderResultHandler" ref="fileReaderResultHandler"/>
+        <property name="lastLocationReader" ref="lastLocationReader"/>
     </bean>
     
     <bean id="errorBufferProvider" class="net.devaction.mylocation.lastknownlocationcore.server.ErrorBufferProvider"/>
-    
-    <bean id="fileReaderResultHandler" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.FileReaderResultHandler"/>
-    
-    <bean id="fileReaderBlockingHandler" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.LocationFromFileReaderHandler">
-        <property name="lastLocationReader" ref="lastLocationReader"/>
-    </bean>
     
     <bean id="lastLocationReader" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.LastLocationReader">
         <property name="filePathProvider" ref="configValuesProvider"/>

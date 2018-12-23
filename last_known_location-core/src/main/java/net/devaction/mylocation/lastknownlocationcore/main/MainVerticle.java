@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import io.vertx.config.ConfigRetriever;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.json.JsonObject;
 import net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider;
-import net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerHandler;
 import net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerVerticle;
 
 import org.springframework.context.ApplicationContext;
@@ -47,8 +47,8 @@ public class MainVerticle extends AbstractVerticle{
                 LastKnownLocationServerVerticle verticle = (LastKnownLocationServerVerticle) appContext.getBean("lastKnownLocationServerVerticle");
                 ((ConfigurableApplicationContext) appContext).close();                
                 
-                LastKnownLocationServerHandler handler = verticle.getHandler();
-                handler.setVertx(vertx);
+                //LastKnownLocationServerHandler handler = verticle.getHandler();
+                //handler.setVertx(vertx);
                 
                 //this is for the sun.misc.SignalHandler.handle method to be able to shutdown Vert.x
                 LastKnownLocationMain.setVertx(vertx);
@@ -58,9 +58,12 @@ public class MainVerticle extends AbstractVerticle{
         });     
     }
     
-    public void deployVerticle(LastKnownLocationServerVerticle verticle){
-        log.info("Going to deploy " + LastKnownLocationServerVerticle.class.getSimpleName());
-        vertx.deployVerticle(verticle, asyncResult -> {
+    public void deployVerticle(LastKnownLocationServerVerticle verticle){        
+        log.info("Going to deploy " + LastKnownLocationServerVerticle.class.getSimpleName() + " as a worker verticle");
+        
+        final DeploymentOptions options = new DeploymentOptions().setWorker(true);
+                
+        vertx.deployVerticle(verticle, options, asyncResult -> {
             if (asyncResult.succeeded()){
                 log.info("Successfully deployed " +  
                         LastKnownLocationServerVerticle.class.getSimpleName() + ". Result: " + asyncResult.result());                             

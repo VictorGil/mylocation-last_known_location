@@ -2,16 +2,19 @@ package net.devaction.mylocation.lastknownlocationcore.main;
 
 import io.vertx.core.Launcher;
 import io.vertx.core.Vertx;
+
 import sun.misc.Signal;
+import sun.misc.SignalHandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * @author Víctor Gil 
  * since June
  */
 @SuppressWarnings("restriction")
-public class LastKnownLocationMain implements sun.misc.SignalHandler{
+public class LastKnownLocationMain implements SignalHandler{
     private static final Logger log = LoggerFactory.getLogger(LastKnownLocationMain.class);
     public  static Vertx vertx;
     private static final String WINCH_SIGNAL = "WINCH";
@@ -41,7 +44,7 @@ public class LastKnownLocationMain implements sun.misc.SignalHandler{
     private void registerThisAsOsSignalHandler(){
         log.info("Going to register this object to handle the " + WINCH_SIGNAL + " signal");
         try{
-            sun.misc.Signal.handle( new sun.misc.Signal(WINCH_SIGNAL), this);
+            Signal.handle(new Signal(WINCH_SIGNAL), this);
         } catch(IllegalArgumentException ex){
             // Most likely this is a signal that's not supported on this
             // platform or with the JVM as it is currently configured
