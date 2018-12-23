@@ -23,7 +23,6 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
     private String address;
     private AddressProvider addressProvider;
     
-    //private LastKnownLocationServerHandler handler;
     private LastKnownLocationServerWorkerHandler handler;
     
     @Override
