@@ -93,10 +93,10 @@
                                 <!-- the version of the protoc compiler must match the --> 
                                 <!-- com.google.protobuf:protobuf-java version -->
                                 
-                                <!--script language="javascript"-->
-                                <!-- workaround for "Unable to create javax script engine for javascript" -->
+                                <script language="javascript" >
+                                <!-- workaround for "Unable to create javax script engine for javascript" using JAVA 10 -->
                                 <!-- bug as explained in: https://bugs.eclipse.org/bugs/show_bug.cgi?id=481482#c11 -->
-                                <script manager="javax" language="javascript" classpath="${java.home}/lib/ext/nashorn.jar">
+                                <!--script manager="javax" language="javascript" classpath="${java.home}/lib/ext/nashorn.jar"-->
                                     <![CDATA[
                                     print("Going to generate the proto Java classes.\n");
                                     var execTask = project.createTask("exec");
