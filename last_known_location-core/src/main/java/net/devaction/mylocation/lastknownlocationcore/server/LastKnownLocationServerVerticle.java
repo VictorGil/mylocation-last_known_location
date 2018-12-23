@@ -56,6 +56,10 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
 
     public void setHandler(LastKnownLocationServerHandler handler){
         this.handler = handler;
+    }
+
+    public LastKnownLocationServerHandler getHandler(){
+        return handler;
     } 
 }
 

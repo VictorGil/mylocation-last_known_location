@@ -7,6 +7,7 @@ import io.vertx.config.ConfigRetriever;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
 import net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider;
+import net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerHandler;
 import net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerVerticle;
 
 import org.springframework.context.ApplicationContext;
@@ -45,6 +46,9 @@ public class MainVerticle extends AbstractVerticle{
                 ApplicationContext appContext = new ClassPathXmlApplicationContext("conf/spring/beans.xml");
                 LastKnownLocationServerVerticle verticle = (LastKnownLocationServerVerticle) appContext.getBean("lastKnownLocationServerVerticle");
                 ((ConfigurableApplicationContext) appContext).close();                
+                
+                LastKnownLocationServerHandler handler = verticle.getHandler();
+                handler.setVertx(vertx);
                 
                 //this is for the sun.misc.SignalHandler.handle method to be able to shutdown Vert.x
                 LastKnownLocationMain.setVertx(vertx);
