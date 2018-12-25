@@ -22,7 +22,10 @@ public class ResponseFromServerHandler implements Handler<AsyncResult<Message<Bu
             Message<Buffer> message = asyncResult.result();
             Buffer buffer = message.body();
             log.debug("Received reply from the server, number of bytes in the body of the message: " + buffer.length());
-        }        
+        } else {   
+            Throwable throwable = asyncResult.cause();
+            log.error("The request could not be processed by the server: " + throwable, throwable);
+        }
     }
 }
 
