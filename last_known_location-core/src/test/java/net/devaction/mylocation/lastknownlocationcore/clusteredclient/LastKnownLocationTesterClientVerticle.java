@@ -31,3 +31,4 @@ public class LastKnownLocationTesterClientVerticle extends AbstractVerticle{
         eventBus.send(address, buffer, new ResponseFromServerHandler());        
     }
 }
+
