@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import io.vertx.core.Launcher;
 import io.vertx.core.Vertx;
 import sun.misc.Signal;
+import sun.misc.SignalHandler;
 
 /**
  * @author Víctor Gil
@@ -13,10 +14,10 @@ import sun.misc.Signal;
  * since December 2018
  */
 @SuppressWarnings("restriction")
-public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler{
+public class LastKnownLocationTesterClientMain implements SignalHandler{
     private static final Logger log = LoggerFactory.getLogger(LastKnownLocationTesterClientMain.class);
     
-    public  static Vertx vertx;
+    private static Vertx vertx;
     private static final String WINCH_SIGNAL = "WINCH";
     private static boolean isVertxClosed = false;  
     
@@ -37,14 +38,10 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
        vertx = vertxArg;
     }
 
-    public static Vertx getVertx(){
-        return vertx;    
-    }
-    
     private void registerThisAsOsSignalHandler(){
         log.info("Going to register this object to handle the " + WINCH_SIGNAL + " signal");
         try{
-            sun.misc.Signal.handle( new sun.misc.Signal(WINCH_SIGNAL), this);
+            Signal.handle( new Signal(WINCH_SIGNAL), this);
         } catch(IllegalArgumentException ex){
             // Most likely this is a signal that's not supported on this
             // platform or with the JVM as it is currently configured
