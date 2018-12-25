@@ -41,7 +41,6 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
         return vertx;    
     }
     
-    @SuppressWarnings("restriction")
     private void registerThisAsOsSignalHandler(){
         log.info("Going to register this object to handle the " + WINCH_SIGNAL + " signal");
         try{
@@ -57,7 +56,6 @@ public class LastKnownLocationTesterClientMain implements sun.misc.SignalHandler
         }        
     }
     
-    @SuppressWarnings("restriction")
     @Override
     public void handle(Signal signal) {
         log.info("Signal " + signal.getName() + " has been captured.");
