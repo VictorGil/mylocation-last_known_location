@@ -47,9 +47,6 @@ public class MainVerticle extends AbstractVerticle{
                 LastKnownLocationServerVerticle verticle = (LastKnownLocationServerVerticle) appContext.getBean("lastKnownLocationServerVerticle");
                 ((ConfigurableApplicationContext) appContext).close();                
                 
-                //LastKnownLocationServerHandler handler = verticle.getHandler();
-                //handler.setVertx(vertx);
-                
                 //this is for the sun.misc.SignalHandler.handle method to be able to shutdown Vert.x
                 LastKnownLocationMain.setVertx(vertx);
                 

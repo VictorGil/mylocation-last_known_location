@@ -24,9 +24,6 @@ public class BaseDirProviderImpl implements BaseDirProvider{
             throw new RuntimeException("errMessage");
         }
         return baseDir;
-    }
-    
-    
+    }    
 }
-
 
