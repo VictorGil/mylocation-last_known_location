@@ -7,7 +7,6 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationRequest;
-import net.devaction.mylocation.lastknownlocationcore.allinonevertxclient.buffer.TestBufferProvider1;
 
 /**
  * @author Víctor Gil
