@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
  *
  * since December 2018
  */
-public class BaseDirProviderImpl implements BaseDirProvider{
-    private static final Logger log = LoggerFactory.getLogger(BaseDirProviderImpl.class);
+public class PersistenceBaseDirProviderImpl implements PersistenceBaseDirProvider{
+    private static final Logger log = LoggerFactory.getLogger(PersistenceBaseDirProviderImpl.class);
 
     private static final String BASE_DIR = "base.dir";
     

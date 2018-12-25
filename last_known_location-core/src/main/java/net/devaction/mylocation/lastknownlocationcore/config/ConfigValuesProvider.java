@@ -18,7 +18,7 @@ public class ConfigValuesProvider implements AddressProvider, FilePathProvider{
     //this contains the file path where we read the latest known location data from
     private static JsonObject lastKnownLocationServiceConfig;
     
-    private BaseDirProvider baseDirProvider;
+    private PersistenceBaseDirProvider baseDirProvider;
     
     @Override
     public String provideAddress(){
@@ -39,7 +39,7 @@ public class ConfigValuesProvider implements AddressProvider, FilePathProvider{
         ConfigValuesProvider.lastKnownLocationServiceConfig = lastKnownLocationServiceConfig;
     }
 
-    public void setBaseDirProvider(BaseDirProvider baseDirProvider){
+    public void setBaseDirProvider(PersistenceBaseDirProvider baseDirProvider){
         this.baseDirProvider = baseDirProvider;
     }
 }
