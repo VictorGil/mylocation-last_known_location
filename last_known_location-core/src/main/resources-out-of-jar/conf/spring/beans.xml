@@ -24,8 +24,9 @@
     </bean>
     
     <bean id="configValuesProvider" class="net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider">
-        <property name="baseDirProvider" ref="baseDirProvider"/>
+        <property name="persistenceBaseDirProvider" ref="persistenceBaseDirProvider"/>
     </bean>
     
-    <bean id="baseDirProvider" class="net.devaction.mylocation.lastknownlocationcore.config.BaseDirProviderImpl"/>
+    <bean id="persistenceBaseDirProvider" class="net.devaction.mylocation.lastknownlocationcore.config.PersistenceBaseDirProviderImpl"/>
 </beans>
+
