@@ -38,7 +38,7 @@ public class ResponseFromServerHandler implements Handler<AsyncResult<Message<Bu
                 return;
             }            
             log.info(LastKnownLocationResponse.class.getSimpleName() + 
-                    " received from the server: " + ProtoUtil.toString(response));
+                    " received from the server:\n" + ProtoUtil.toString(response));
             
         } else {   
             Throwable throwable = asyncResult.cause();

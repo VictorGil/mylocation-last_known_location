@@ -16,7 +16,7 @@ public class LastKnownLocationRequestProvider01{
     public static LastKnownLocationRequest provide(){
         
         LastKnownLocationRequest.Builder requestBuilder = LastKnownLocationRequest.newBuilder();
-        requestBuilder.setTimestamp(System.currentTimeMillis());
+        requestBuilder.setTimestamp(System.currentTimeMillis() / 1000);
         LastKnownLocationRequest request = requestBuilder.build();
         
         log.info("Test request:\n" + request);
