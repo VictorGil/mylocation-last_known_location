@@ -7,6 +7,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationRequest;
+import net.devaction.mylocation.lastknownlocationapi.util.ProtoUtil;
 
 /**
  * @author Víctor Gil
@@ -24,6 +25,9 @@ public class LastKnownLocationTesterClientVerticle extends AbstractVerticle{
         EventBus eventBus = vertx.eventBus();
         
         LastKnownLocationRequest protoRequest = LastKnownLocationRequestProvider01.provide();
+        log.info(LastKnownLocationRequest.class.getSimpleName() + " to be sent:\n" + 
+                ProtoUtil.toString(protoRequest));
+        
         Buffer buffer = Buffer.buffer(); 
         buffer.appendBytes(protoRequest.toByteArray());
         

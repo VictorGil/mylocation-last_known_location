@@ -10,6 +10,7 @@ import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.Message;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationResponse;
+import net.devaction.mylocation.lastknownlocationapi.util.ProtoUtil;
 
 /**
  * @author Víctor Gil
@@ -33,7 +34,8 @@ public class ResponseFromServerHandler implements Handler<AsyncResult<Message<Bu
                 log.error("Invalid response received from the server: " + ex, ex);
                 return;
             }            
-            log.info("Response received from the server: " + response);
+            log.info(LastKnownLocationResponse.class.getSimpleName() + 
+                    " received from the server: " + ProtoUtil.toString(response));
             
         } else {   
             Throwable throwable = asyncResult.cause();

@@ -10,6 +10,7 @@ import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.Message;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationRequest;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationResponse;
+import net.devaction.mylocation.lastknownlocationapi.util.ProtoUtil;
 import net.devaction.mylocation.lastknownlocationcore.server.blocking.LastLocationReader;
 
 /**
@@ -32,18 +33,21 @@ public class LastKnownLocationServerWorkerHandler implements Handler<Message<Buf
         //Example thread name: vert.x-eventloop-thread-1
         log.trace("We have received a message which contains " + numberOfBytesReceived + " bytes.");
         
+        LastKnownLocationRequest request;
         try{
-            LastKnownLocationRequest.parseFrom(buffer.getBytes());
+            request = LastKnownLocationRequest.parseFrom(buffer.getBytes());
         } catch (InvalidProtocolBufferException ex){
             log.error(ex.toString(), ex);
             binaryMessage.reply(errorBufferProvider.provide(ex.toString(), ex));
             return;
         }
+        log.trace("Received " + LastKnownLocationRequest.class.getSimpleName() + 
+                " :\n" + ProtoUtil.toString(request));
         
         LastKnownLocationResponse response = lastLocationReader.read();
         Buffer responseBuffer = Buffer.buffer(response.toByteArray());
         
-        log.trace("Going to send response: " + response);
+        log.trace("Going to send response: " + ProtoUtil.toString(response));
         
         binaryMessage.reply(responseBuffer);
     }
