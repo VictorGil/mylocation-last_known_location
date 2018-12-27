@@ -12,11 +12,14 @@ import io.vertx.core.eventbus.Message;
 import net.devaction.mylocation.lastknownlocationapi.protobuf.LastKnownLocationResponse;
 import net.devaction.mylocation.lastknownlocationapi.util.ProtoUtil;
 
+//NOTE: this is not part of the standard Java API
+import sun.misc.Signal;
 /**
  * @author Víctor Gil
  *
  * since December 2018
  */
+@SuppressWarnings("restriction")
 public class ResponseFromServerHandler implements Handler<AsyncResult<Message<Buffer>>>{
     private static final Logger log = LoggerFactory.getLogger(ResponseFromServerHandler.class);
 
@@ -41,6 +44,9 @@ public class ResponseFromServerHandler implements Handler<AsyncResult<Message<Bu
             Throwable throwable = asyncResult.cause();
             log.error("The request could not be processed by the server: " + throwable, throwable);
         }
+        
+        log.info("Going to raise a WINCH signal in order to trigger the graceful shutdown of both Vert.x and the JVM");
+        Signal.raise(new Signal("WINCH"));
     }
 }
 
