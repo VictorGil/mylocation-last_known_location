@@ -7,8 +7,16 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <bean id="verticlesBean" class="net.devaction.mylocation.vertxutilityextensions.main.VerticlesBean">
+        <property name="verticles">
+            <list value-type="io.vertx.core.Verticle">
+                <ref bean="lastKnownLocationServerVerticle"/>
+            </list>
+        </property>
+    </bean>   
+    
     <bean id="lastKnownLocationServerVerticle" class="net.devaction.mylocation.lastknownlocationcore.server.LastKnownLocationServerVerticle">
-        <property name="addressProvider" ref="configValuesProvider"/>
+        <property name="addressProvider" ref="lastKnownLocationConfigValuesProvider"/>
         <property name="handler" ref="lastKnownLocationServerHandler"/>
     </bean>    
     
@@ -20,13 +28,16 @@
     <bean id="errorBufferProvider" class="net.devaction.mylocation.lastknownlocationcore.server.ErrorBufferProvider"/>
     
     <bean id="lastLocationReader" class="net.devaction.mylocation.lastknownlocationcore.server.blocking.LastLocationReader">
-        <property name="filePathProvider" ref="configValuesProvider"/>
+        <property name="filePathProvider" ref="lastKnownLocationConfigValuesProvider"/>
     </bean>
     
-    <bean id="configValuesProvider" class="net.devaction.mylocation.lastknownlocationcore.config.ConfigValuesProvider">
+    <bean id="lastKnownLocationConfigValuesProvider" class="net.devaction.mylocation.lastknownlocationcore.config.LastKnownLocationConfigValuesProvider">
         <property name="persistenceBaseDirProvider" ref="persistenceBaseDirProvider"/>
+        <property name="configValuesProvider" ref="configValuesProvider"/>
     </bean>
     
     <bean id="persistenceBaseDirProvider" class="net.devaction.mylocation.lastknownlocationcore.config.PersistenceBaseDirProviderImpl"/>
+    
+     <bean id="configValuesProvider" class="net.devaction.mylocation.vertxutilityextensions.config.ConfigValuesProviderImpl"/>
 </beans>
 

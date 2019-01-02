@@ -29,7 +29,8 @@ public class LastKnownLocationTesterClientMain implements SignalHandler{
     
     private void run(){
         log.info("Starting tester  application");        
-        Launcher.executeCommand("run", TesterClientMainVerticle.class.getName(), "-cluster");   
+        Launcher.executeCommand("run", TesterClientMainVerticle.class.getName(), 
+                "-cluster", "-cluster-host", "localhost");   
         registerThisAsOsSignalHandler();
     }
     
