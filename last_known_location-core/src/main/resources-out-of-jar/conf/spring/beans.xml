@@ -38,6 +38,6 @@
     
     <bean id="persistenceBaseDirProvider" class="net.devaction.mylocation.lastknownlocationcore.config.PersistenceBaseDirProviderImpl"/>
     
-     <bean id="configValuesProvider" class="net.devaction.mylocation.vertxutilityextensions.config.ConfigValuesProviderImpl"/>
+    <bean id="configValuesProvider" class="net.devaction.mylocation.vertxutilityextensions.config.ConfigValuesProviderImpl"/>
 </beans>
 
