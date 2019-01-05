@@ -15,7 +15,7 @@ import net.devaction.mylocation.vertxutilityextensions.config.ConfigValuesProvid
 public class LastKnownLocationConfigValuesProvider implements AddressProvider, FilePathProvider{
     private static final Logger log = LoggerFactory.getLogger(LastKnownLocationConfigValuesProvider.class);
     
-    //this contains the file path where we read the latest known location data from
+    //this is used to obtain the file path where we read the latest known location data from
     private ConfigValuesProvider configValuesProvider;
     
     private PersistenceBaseDirProvider persistenceBaseDirProvider;
