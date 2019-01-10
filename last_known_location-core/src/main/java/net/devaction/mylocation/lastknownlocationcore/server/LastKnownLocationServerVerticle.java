@@ -35,8 +35,7 @@ public class LastKnownLocationServerVerticle extends AbstractVerticle implements
     
     @Override
     public void start() throws Exception {
-        EventBus eventBus = vertx.eventBus();
-        
+        EventBus eventBus = vertx.eventBus();        
         
         MessageConsumer<Buffer> consumer = eventBus.consumer(address, handler);
         

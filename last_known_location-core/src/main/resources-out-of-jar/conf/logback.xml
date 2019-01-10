@@ -21,11 +21,11 @@
         <appender-ref ref="console" />
     </logger>
     
-    <logger name="com.hazelcast" level="warn" additivity="false">
+    <logger name="com.hazelcast" level="info" additivity="false">
         <appender-ref ref="console" />
     </logger>
         
-    <root level="warn">
+    <root level="info">
         <appender-ref ref="console" />
     </root>
 

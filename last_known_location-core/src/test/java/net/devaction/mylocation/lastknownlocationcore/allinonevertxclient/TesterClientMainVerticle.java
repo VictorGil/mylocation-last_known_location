@@ -44,4 +44,3 @@ public class TesterClientMainVerticle extends AbstractVerticle{
     }
 }
 
-

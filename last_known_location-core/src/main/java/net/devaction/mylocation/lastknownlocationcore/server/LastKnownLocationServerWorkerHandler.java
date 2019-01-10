@@ -44,10 +44,13 @@ public class LastKnownLocationServerWorkerHandler implements Handler<Message<Buf
         log.trace("Received " + LastKnownLocationRequest.class.getSimpleName() + 
                 " :\n" + ProtoUtil.toString(request));
         
+        //TO DO: this should be executed on a worker thread
         LastKnownLocationResponse response = lastLocationReader.read();
+        
         Buffer responseBuffer = Buffer.buffer(response.toByteArray());
         
-        log.trace("Going to send response: " + ProtoUtil.toString(response));
+        log.trace("Going to send " + response.getClass().getSimpleName() + 
+                ":\n" + ProtoUtil.toString(response));
         
         binaryMessage.reply(responseBuffer);
     }
