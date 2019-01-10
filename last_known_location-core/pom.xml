@@ -4,7 +4,7 @@
 
     <groupId>net.devaction.mylocation</groupId>
     <artifactId>last_known_location-core</artifactId>
-    <version>1.0.0.0-SNAPSHOT</version>
+    <version>1.0.0.0</version>
     <packaging>jar</packaging>
 
     <url>http://devaction.net</url>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>net.devaction.mylocation</groupId>
             <artifactId>last_known_location-api</artifactId>
-            <version>1.0.0.0-SNAPSHOT</version>
+            <version>1.0.0.0</version>
         </dependency>                
         <dependency>
             <groupId>net.devaction</groupId>
             <artifactId>vertx-utility-extensions</artifactId>
-            <version>1.0.0.0-SNAPSHOT</version>
+            <version>1.0.0.0</version>
         </dependency> 
         <!-- this is required to redirect the Spring logging statements to SLF4J (logback) -->
         <dependency>
